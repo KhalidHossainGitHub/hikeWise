@@ -1,6 +1,8 @@
 # HikeWise
 
-**HikeWise** is a trail difficulty visualizer built using **React**, **TypeScript**, **Mapbox GL JS**, and the **Open-Meteo API**. Upload a GPX route file and instantly see segment-by-segment difficulty color-coded on a 3-D satellite map with real terrain elevation and live weather data. The application is fully responsive, providing a seamless experience on both desktop and mobile devices.
+**HikeWise** is a trail difficulty visualizer that helps you understand how challenging a hike will feel *before* you start. Instead of judging a trail by distance alone, you can upload a GPX route file and instantly see which parts are easy, moderate, or tough — clearly color-coded on an interactive 3D map.
+
+It considers elevation and weather conditions to give you a more realistic sense of what to expect, so you can plan better, hike smarter, and avoid surprises on the trail. The app works smoothly on both desktop and mobile devices.
 
 🔗 **Live Demo:** [hikewise-v2.vercel.app](https://hikewise-v2.vercel.app)
 
@@ -22,7 +24,7 @@ HikeWise enables hikers and outdoor enthusiasts to:
 - **Switch Map Styles**: Toggle between Satellite, Streets, and Outdoors map styles while preserving 3-D terrain.
 
 <p align="center">
-  <img width="600" alt="Segment Interaction" src="public\hikeWise-segments.png">
+  <img width="800" alt="Segment Interaction" src="public\hikeWise-segments.png">
   <br>
   <b>Figure 2: Clicking a segment to highlight it and fly to its location on the map.</b>
 </p>
