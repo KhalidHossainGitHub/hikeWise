@@ -11,6 +11,7 @@ const App: React.FC = () => {
   const { segments, summary, loading, error, processGpx } = useGpxRoute();
   const [activeSegId, setActiveSegId] = useState<number | null>(null);
   const [mapStyle, setMapStyle] = useState("Satellite");
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const mapRef = useRef<MapHandle>(null);
 
   const hasRoute = segments.length > 0;
@@ -28,8 +29,32 @@ const App: React.FC = () => {
         </div>
       )}
 
-      {/* Floating sidebar panel — slides in from left */}
-      <aside className={`sidebar-panel ${hasRoute ? "sidebar-panel--open" : ""}`}>
+      {/* Floating sidebar panel — slides in from left (desktop), bottom drawer (mobile) */}
+      <aside className={`sidebar-panel ${hasRoute ? "sidebar-panel--open" : ""} ${drawerOpen ? "sidebar-panel--expanded" : ""}`}>
+        {/* Mobile drawer handle */}
+        <button
+          className="drawer-handle"
+          onClick={() => setDrawerOpen((prev) => !prev)}
+          aria-label={drawerOpen ? "Collapse panel" : "Expand panel"}
+        >
+          <span className="drawer-handle-bar" />
+          {!drawerOpen && summary && (
+            <div className="drawer-peek">
+              <span className="drawer-peek-item">
+                <strong>{summary.totalDistance.toFixed(1)}</strong> km
+              </span>
+              <span className="drawer-peek-divider">·</span>
+              <span className="drawer-peek-item">
+                <strong>{summary.totalAscent.toFixed(0)}</strong> m↑
+              </span>
+              <span className="drawer-peek-divider">·</span>
+              <span className="drawer-peek-item">
+                Max <strong>{summary.maxDifficulty.toFixed(0)}</strong>
+              </span>
+            </div>
+          )}
+        </button>
+
         {summary && <RouteSummary summary={summary} />}
 
         {/* ── Map controls row ── */}
